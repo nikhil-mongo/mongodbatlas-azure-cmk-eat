@@ -30,14 +30,14 @@ Setup Instructions
 
 1. Clone the Repository
 
-git clone <repository-url>
-cd <repository-folder>
+git clone `<repository-url>` && 
+cd `<repository-folder>`
 
 2. Initialize Terraform
 
 Run the following command to initialize the Terraform working directory:
 
-terraform init
+```terraform init```
 
 3. Configure Variables
 
@@ -48,16 +48,19 @@ Edit the variables.tf file or create a terraform.tfvars file with the following 
 
 Example terraform.tfvars:
 
+```
 atlas_project_id = "your-atlas-project-id"
 mongodbatlas_public_key = "your-public-key"
 mongodbatlas_private_key = "your-private-key"
+```
 
 4. Deploy the Infrastructure
 
 Run the following commands to review and apply the configuration:
-
+```
 terraform plan
 terraform apply
+```
 
 Resources Created 1. Azure Key Vault:
 • Key Vault with specified access policies and keys.
@@ -71,17 +74,18 @@ Outputs
 The following outputs are provided after successful deployment:
 
 Output Description
-application_client_id The Client ID of the Azure AD application.
-application_client_secret The Client Secret of the Azure AD application.
-tenant_id The Azure AD tenant ID.
-azurerm_key_vault_key_identifier The unique identifier of the Key Vault key.
-is_azure_encryption_at_rest_valid Indicates whether encryption at rest is properly configured in MongoDB Atlas.
+**application_client_id** The Client ID of the Azure AD application.
+**application_client_secret** The Client Secret of the Azure AD application.
+**tenant_id** The Azure AD tenant ID.
+**azurerm_key_vault_key_identifier** The unique identifier of the Key Vault key.
+**is_azure_encryption_at_rest_valid** Indicates whether encryption at rest is properly configured in MongoDB Atlas.
 
 Cleanup
 
 To destroy the created resources, run:
-
+```
 terraform destroy
+```
 
 Notes
 • The Key Vault is configured with soft delete enabled for 7 days, but purge protection is disabled.
